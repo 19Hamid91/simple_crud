@@ -1,0 +1,1 @@
+<h2 align="center" style="background-color: blue;color:aliceblue" class="p-2">Data Magang</h2>
