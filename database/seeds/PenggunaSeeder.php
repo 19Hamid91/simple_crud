@@ -22,7 +22,7 @@ class PenggunaSeeder extends Seeder
                 [
                     'nama' => $faker->firstName,
                     'alamat' => $faker->address,
-                    'telpon' => $faker->phoneNumber,
+                    'telpon' => $faker->numerify('############'),
                     'tgl_lahir' =>$faker->dateTimeBetween('1990-01-01', '2012-12-31')->format('Y-m-d'),
                     'asal_sekolah' => 'polines'
                 ]

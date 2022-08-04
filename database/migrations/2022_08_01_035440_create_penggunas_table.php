@@ -17,7 +17,7 @@ class CreatePenggunasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama');
             $table->text('alamat');
-            $table->string('telpon');
+            $table->bigInteger('telpon');
             $table->date('tgl_lahir');
             $table->string('asal_sekolah');
             $table->softDeletes();

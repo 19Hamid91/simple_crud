@@ -25,7 +25,7 @@
     </div>
     <div class="form-group p-3">
         <label for="telpon">Telpon : </label>
-        <input type="text" name="telpon" class="form-control" value="{{ $pengguna->telpon }}">
+        <input type="number" oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="12" name="telpon" class="form-control" value="{{ $pengguna->telpon }}">
     </div>
     <div class="form-group p-3">
         <label for="email">Tanggal Lahir : </label>
