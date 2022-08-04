@@ -91,7 +91,7 @@ class HomeController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect('user');
+        return redirect('user')->withFail('Data berhasil dihapus!');
     }
 
 //     public function logout()

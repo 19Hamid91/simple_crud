@@ -45,6 +45,15 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'nama' => 'required',
+            'alamat' => 'required',
+            'telpon' => 'required|numeric',
+            'alamat' => 'required',
+            'tgl_lahir' => 'required',
+            'asal_sekolah' => 'required',
+        ]);
+
         $penggunas = new pengguna;
         $penggunas->nama = $request->nama;
         $penggunas->alamat = $request->alamat;
@@ -53,7 +62,7 @@ class PenggunaController extends Controller
         $penggunas->asal_sekolah = $request->asal_sekolah;
         $penggunas->save();
 
-        return redirect('pengguna');
+        return redirect('pengguna')->withSuccess('Data berhasil ditambahkan!');
     }
 
     /**
@@ -88,6 +97,15 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'nama' => 'required',
+            'alamat' => 'required',
+            'telpon' => 'required|numeric',
+            'alamat' => 'required',
+            'tgl_lahir' => 'required',
+            'asal_sekolah' => 'required',
+        ]);
+
         $pengguna = pengguna::find($id);
         $pengguna->nama = $request->nama;
         $pengguna->alamat = $request->alamat;
@@ -96,7 +114,7 @@ class PenggunaController extends Controller
         $pengguna->asal_sekolah = $request->asal_sekolah;
         $pengguna->update();
 
-        return redirect('pengguna');
+        return redirect('pengguna')->withSuccess('Data berhasil diupdate!');
     }
 
     /**
@@ -110,7 +128,7 @@ class PenggunaController extends Controller
         $pengguna = pengguna::find($id);
         $pengguna->delete();
 
-        return redirect('pengguna');
+        return redirect('pengguna')->withFail('Data berhasil dihapus!');
     }
 
     public function downloadpdf()

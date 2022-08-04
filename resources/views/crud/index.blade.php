@@ -2,16 +2,26 @@
 
 @section('content')
     <div class="container">
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{Session::get('success')}}
+            </div>
+        @endif
+        @if(Session::has('fail'))
+            <div class="alert alert-danger">
+                {{Session::get('fail')}}
+            </div>
+        @endif
         <h2>Data Mahasiswa Magang</h2>
-                @if (Auth::check() && Auth::user()->level == 'admin')
+            @if (Auth::check() && Auth::user()->level == 'admin')
                 <a href="{{ route('pengguna.create') }}" class="btn btn-primary">Tambah</a>
-                @endif
+            @endif
                 <a href="{{ route('download_pdf') }}" class="btn btn-danger">PDF</a>
                 <a href="{{ route('pengguna_excel') }}" class="btn btn-success">Excel</a>
                 <table class="table table-bordered ">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>Telpon</th>
@@ -22,7 +32,7 @@
                     <tbody>
                         @foreach($penggunas as $p)
                         <tr>
-                            <td>{{ $p->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $p->nama }}</td>
                             <td>{{ $p->alamat }}</td>
                             <td>{{ $p->telpon }}</td>

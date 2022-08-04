@@ -2,6 +2,17 @@
 
 @section('content')
 <div class="container">
+
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+<br/>
 <form action="{{ route('pengguna.store') }}" method="POST">
 @csrf
     <div class="form-group p-3">
@@ -25,7 +36,7 @@
         <input type="text" name="asal_sekolah" class="form-control">
     </div>
     <button type="submit" class="btn btn-primary">Simpan</button>
-    <a href="{{ URL::previous() }}" class="btn btn-danger">Kembali</a>
+    <a href="{{ route('pengguna.index') }}" class="btn btn-danger">Kembali</a>
 </form>
 </div>    
 

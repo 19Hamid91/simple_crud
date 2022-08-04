@@ -1,6 +1,11 @@
 @extends('layout.master')
 
 @section('content')
+    @if(Session::has('fail'))
+        <div class="alert alert-danger">
+            {{Session::get('fail')}}
+        </div>
+    @endif
     <div class="container">
         <h2>Data User</h2>
                 <table class="table table-bordered ">
@@ -10,17 +15,17 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Level</th>
-                            <th>Created At</th>
+                            <th>Verified At</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($user as $u)
                         <tr>
-                            <td>{{ $u->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $u->name }}</td>
                             <td>{{ $u->email }}</td>
                             <td>{{ $u->level }}</td>
-                            <td>{{ $u->created_at }}</td>
+                            <td>{{ $u->email_verified_at }}</td>
                             <td>
                                 <form action="{{ route('user.delete', $u->id) }}" method="POST">
                                     @csrf
