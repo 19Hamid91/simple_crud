@@ -20,6 +20,7 @@ class CreatePenggunasTable extends Migration
             $table->string('telpon');
             $table->date('tgl_lahir');
             $table->string('asal_sekolah');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
