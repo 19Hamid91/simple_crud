@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-6">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-3 text-center">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -17,10 +17,12 @@
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
+                        <h3 class="fw-bold mb-4 text-uppercase">{{ __('Lupa Password') }}</h3>
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -33,15 +35,17 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
+                                <button class="btn btn-outline-light btn-md px-5" type="submit">{{ __('Send Password Link') }}</button>
                             </div>
                         </div>
+                        <br>
+                        <a class="text-white-50 mr-2" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="text-white-50 ml-2" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </form>
                 </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
+    </section>
 @endsection
