@@ -1,5 +1,4 @@
 @extends('layout.master')
-
 @section('content')
     <div class="container">
         @if(Session::has('success'))
@@ -13,12 +12,15 @@
             </div>
         @endif
         <h2>Data Mahasiswa Magang</h2>
+        <div class="pb-3">
             @if (Auth::check() && Auth::user()->level == 'admin')
                 <a href="{{ route('pengguna.create') }}" class="btn btn-primary">Tambah</a>
             @endif
                 <a href="{{ route('download_pdf') }}" class="btn btn-danger">PDF</a>
                 <a href="{{ route('pengguna_excel') }}" class="btn btn-success">Excel</a>
-                <table class="table table-bordered ">
+        </div>
+        <div>
+                <table id="MainTable" class="display">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -27,6 +29,8 @@
                             <th>Telpon</th>
                             <th>Tanggal Lahir</th>
                             <th>Asal Sekolah</th>
+                            <th class="no-sort"></th>
+                            <th class="no-sort"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +57,14 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+        </div>
     </div>
 @endsection
+@push('js')    
+<script>
+    //load datatable
+    $(document).ready( function () {
+        $('#MainTable').DataTable();
+            } );
+</script>
+@endpush

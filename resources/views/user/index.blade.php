@@ -8,7 +8,7 @@
     @endif
     <div class="container">
         <h2>Data User</h2>
-                <table class="table table-bordered ">
+                <table id="tableUser" class="display">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -16,6 +16,7 @@
                             <th>Email</th>
                             <th>Level</th>
                             <th>Verified At</th>
+                            <th class="no-sort"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,3 +40,11 @@
             </div>
     </div>
 @endsection
+@push('js')    
+<script>
+    //load datatable
+    $(document).ready( function () {
+        $('#tableUser').DataTable();
+            } );
+</script>
+@endpush
